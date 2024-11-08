@@ -66,9 +66,7 @@ import Control.DeepSeq (NFData(rnf))
 #ifdef __GLASGOW_HASKELL__
 import Data.Data (Data)
 import GHC.Generics (Generic, Generic1)
-import Language.Haskell.TH.Syntax (Lift)
--- See Note [ Template Haskell Dependencies ]
-import Language.Haskell.TH ()
+import TemplateHaskell.Lift (Lift)
 #endif
 
 import Control.Monad.Zip (MonadZip (..))

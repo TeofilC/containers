@@ -226,9 +226,7 @@ import Text.Read (Lexeme(Ident), lexP, parens, prec,
     readPrec, readListPrec, readListPrecDefault)
 import Data.Data
 import Data.String (IsString(..))
-import qualified Language.Haskell.TH.Syntax as TH
--- See Note [ Template Haskell Dependencies ]
-import Language.Haskell.TH ()
+import qualified TemplateHaskell.Lift as TH
 import GHC.Generics (Generic, Generic1)
 #endif
 
@@ -344,7 +342,8 @@ newtype Seq a = Seq (FingerTree (Elem a))
 #ifdef __GLASGOW_HASKELL__
 -- | @since 0.6.6
 instance TH.Lift a => TH.Lift (Seq a) where
-#  if MIN_VERSION_template_haskell(2,16,0)
+-- template-haskell >= 2.16
+#  if __GLASGOW_HASKELL__ > 810
   liftTyped t = [|| coerceFT z ||]
 #  else
   lift t = [| coerceFT z |]

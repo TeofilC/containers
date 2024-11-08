@@ -258,9 +258,7 @@ import qualified GHC.Exts as GHCExts
 import Text.Read ( readPrec, Read (..), Lexeme (..), parens, prec
                  , lexP, readListPrecDefault )
 import Data.Data
-import Language.Haskell.TH.Syntax (Lift)
--- See Note [ Template Haskell Dependencies ]
-import Language.Haskell.TH ()
+import TemplateHaskell.Lift (Lift)
 #endif
 
 

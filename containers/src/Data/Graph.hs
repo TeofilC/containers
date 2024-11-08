@@ -136,9 +136,7 @@ import Data.Semigroup (Semigroup (..))
 #ifdef __GLASGOW_HASKELL__
 import GHC.Generics (Generic, Generic1)
 import Data.Data (Data)
-import Language.Haskell.TH.Syntax (Lift(..))
--- See Note [ Template Haskell Dependencies ]
-import Language.Haskell.TH ()
+import TemplateHaskell.Lift (Lift)
 #endif
 
 -- Make sure we don't use Integer by mistake.
@@ -182,7 +180,7 @@ deriving instance Generic1 SCC
 deriving instance Generic (SCC vertex)
 
 -- There is no instance Lift (NonEmpty v) before template-haskell-2.15.
-#if MIN_VERSION_template_haskell(2,15,0)
+#if __GLASGOW_HASKELL__ > 804
 -- | @since 0.6.6
 deriving instance Lift vertex => Lift (SCC vertex)
 #else

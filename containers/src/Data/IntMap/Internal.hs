@@ -326,9 +326,7 @@ import Data.Data (Data(..), Constr, mkConstr, constrIndex, Fixity(Prefix),
 import GHC.Exts (build)
 import qualified GHC.Exts as GHCExts
 import Text.Read
-import Language.Haskell.TH.Syntax (Lift)
--- See Note [ Template Haskell Dependencies ]
-import Language.Haskell.TH ()
+import TemplateHaskell.Lift (Lift)
 #endif
 import qualified Control.Category as Category
 
